@@ -68,8 +68,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 8rem 2.5rem 5rem;
-    max-width: 900px;
+    max-width: 960px;
+    margin: 0 auto;
     position: relative;
     overflow: hidden;
   }
@@ -96,36 +99,34 @@
   }
   .hero-inner {
     display: flex;
-    align-items: flex-start;
-    gap: 2.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
   }
   .hero-photo {
-    width: 110px;
-    height: 110px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--border);
+    border: 3px solid var(--border);
     flex-shrink: 0;
-    margin-top: 0.5rem;
     background: var(--card);
   }
   .hero-photo-fallback {
-    width: 110px;
-    height: 110px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    border: 2px solid var(--border);
+    border: 3px solid var(--border);
     flex-shrink: 0;
-    margin-top: 0.5rem;
     background: var(--card);
     display: none;
     align-items: center;
     justify-content: center;
     font-family: var(--serif);
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     color: var(--accent);
   }
-  .hero-text { flex: 1; min-width: 260px; }
+  .hero-text { max-width: 680px; }
   .hero-eyebrow {
     font-size: 0.75rem;
     font-weight: 500;
@@ -148,9 +149,9 @@
     color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.75;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
   }
-  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
   /* BUTTONS */
   .btn {
@@ -170,7 +171,7 @@
   .btn-ghost:hover { border-color: var(--text-secondary); color: var(--text); text-decoration: none; }
 
   /* SECTIONS */
-  section { padding: 5rem 2.5rem; max-width: 900px; }
+  section { padding: 5rem 2.5rem; max-width: 960px; margin: 0 auto; width: 100%; }
   .section-label {
     font-size: 0.72rem;
     font-weight: 500;
@@ -320,7 +321,7 @@
     .nav-links { gap: 1rem; }
     .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
     .hero h1 { font-size: 2.2rem; }
-    .hero-photo, .hero-photo-fallback { width: 80px; height: 80px; }
+    .hero-photo, .hero-photo-fallback { width: 120px; height: 120px; }
     .exp-header { flex-direction: column; gap: 0.25rem; }
     .edu-item { flex-direction: column; gap: 0.25rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -433,6 +434,7 @@
       <span class="skill-pill">Domain Adaptation</span>
       <span class="skill-pill">LoRA / PEFT</span>
       <span class="skill-pill">Uncertainty Estimation</span>
+      <span class="skill-pill">PyTorch</span>
     </div>
   </div>
 
@@ -448,9 +450,9 @@
       <li>Built an image processing pipeline with denoising and ridge operators to generate vessel masks, reducing annotation time by 3×.</li>
     </ul>
     <div class="skill-pills">
-      <span class="skill-pill">Image Classification</span>
+      <span class="skill-pill">Computer Vision</span>
       <span class="skill-pill">Vision Transformers</span>
-      <span class="skill-pill">Convolutional Neural Networks</span>
+      <span class="skill-pill">CNN</span>
       <span class="skill-pill">Image Processing</span>
       <span class="skill-pill">Annotation Protocol Design</span>
       <span class="skill-pill">OpenCV</span>
@@ -472,7 +474,7 @@
         <span class="skill-pill">UDA</span>
         <span class="skill-pill">MedSAM</span>
         <span class="skill-pill">Foundation Models</span>
-      
+        <span class="skill-pill">PyTorch</span>
       </div>
     </div>
 
@@ -483,7 +485,7 @@
       <p class="project-stat">+51.3% performance improvement</p>
       <div class="skill-pills">
         <span class="skill-pill">Diffusion Models</span>
-        <span class="skill-pill">Masked Image Modelling</span>
+        <span class="skill-pill">MAE</span>
         <span class="skill-pill">Contrastive Learning</span>
         <span class="skill-pill">Classifier-Free Guidance</span>
       </div>
