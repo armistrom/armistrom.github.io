@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitin Shreyes Venkatesan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0D0D0D;
+    --surface: #141414;
+    --card: #1A1A1A;
+    --border: #272727;
+    --accent: #4A9EBF;
+    --accent-dim: rgba(74,158,191,0.12);
+    --text: #F0EDE6;
+    --text-secondary: #888882;
+    --text-muted: #4A4A46;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 2.5rem 5rem;
+    max-width: 860px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -10%; right: -10%; bottom: 0;
+    background: linear-gradient(180deg, rgba(74,158,191,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .scan-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: scan 3.5s ease-in-out infinite;
+    opacity: 0.5;
+  }
+  @keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.8rem;
+    color: var(--text);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0D0D0D;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #5BAFD0; text-decoration: none; color: #0D0D0D; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--text-secondary); color: var(--text); text-decoration: none; }
+
+  /* SECTIONS */
+  section {
+    padding: 5rem 2.5rem;
+    max-width: 860px;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .skill-cell {
+    background: var(--card);
+    padding: 1.4rem 1.5rem;
+  }
+  .skill-cell-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--border); }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+  .exp-date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-top: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+  .exp-org {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: #383838; }
+  .project-card-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    margin-bottom: 0.85rem;
+  }
+  .project-card h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .project-card p {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .project-stat {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.8rem 0;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+  }
+  .edu-item:last-child { border-bottom: 1px solid var(--border); }
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  .edu-school {
+    font-size: 0.83rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .edu-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-top: 0.25rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin: 1.5rem 0;
+    opacity: 0.5;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .exp-header { flex-direction: column; gap: 0.25rem; }
+    .edu-item { flex-direction: column; gap: 0.25rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">NSV</span>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="scan-line"></div>
+  <p class="hero-eyebrow">ML Researcher · San Diego, CA</p>
+  <h1>Nitin Shreyes<br><em>Venkatesan</em></h1>
+  <p class="hero-bio">
+    Bioengineering M.S. candidate at UC San Diego building ML systems for healthcare.
+    Experienced across computer vision, statistical modelling, and retrieval-augmented systems —
+    with a track record of owning full pipelines from annotation protocol design
+    to model development and clinical evaluation.
+  </p>
+  <div class="hero-links">
+    <a href="mailto:vnitinshreyes@gmail.com" class="btn btn-primary">Get in touch</a>
+    <a href="https://github.com/vnitinshreyes" target="_blank" class="btn btn-ghost">GitHub</a>
+    <a href="https://linkedin.com/in/vnitinshreyes" target="_blank" class="btn btn-ghost">LinkedIn</a>
+  </div>
+</div>
+
+<section id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2 class="section-title">Technical skills</h2>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <p class="skill-cell-label">Languages</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">R</span>
+        <span class="tag">C</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <p class="skill-cell-label">Frameworks</p>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">HuggingFace</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">FAISS</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <p class="skill-cell-label">Domains</p>
+      <div class="skill-tags">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Generative AI</span>
+        <span class="tag">RAG</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Medical Imaging</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <p class="skill-cell-label">Tools</p>
+      <div class="skill-tags">
+        <span class="tag">Git</span>
+        <span class="tag">Docker</span>
+        <span class="tag">AWS Bedrock</span>
+        <span class="tag">nnUNet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label">Work</p>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <p class="exp-role">Graduate Student Researcher</p>
+      <p class="exp-date">Present</p>
+    </div>
+    <p class="exp-org">Department of Surgery, UC San Diego Health</p>
+    <ul class="exp-bullets">
+      <li>Implemented custom nnUNet trainers with uncertainty-aware loss functions for CTA vasculature segmentation, achieving 94.7% Dice while producing uncertainty estimates to drive downstream sample selection and ensembling.</li>
+      <li>Built an end-to-end human-in-the-loop domain-adaptation annotation tool for diseased CT angiography — from initial segmentation protocol to clinician-in-the-loop fine-tuning on diseased anatomy.</li>
+      <li>Experimenting with parameter-efficient adaptation (LoRA-based SFT, case-specific and EMA adapters) to improve transfer to diseased anatomy.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <p class="exp-role">Research Intern</p>
+      <p class="exp-date">Mar 2025</p>
+    </div>
+    <p class="exp-org">Medical Ultrasound Research Laboratory, IIT Hyderabad</p>
+    <ul class="exp-bullets">
+      <li>Designed and standardised a full data collection protocol end-to-end — from calibrating ultrasound system parameters and building a volumetric scanning GUI, through to acquiring 70+ benign and malignant breast tumour volumes.</li>
+      <li>Trained CNN and Vision Transformer (ViT) models for BI-RADS classification, achieving 76% accuracy (+23% over baseline).</li>
+      <li>Built an image processing pipeline with denoising and ridge operators to generate vessel masks, reducing annotation time by 3×.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label">Research</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="project-card-tag">Domain Adaptation</span>
+      <h3>Foundation Model Adaptation for Medical Imaging</h3>
+      <p>Reviewing UDA and Test Time Adaptation for medical image segmentation, focusing on language as a domain-agnostic cue. Implementing latent-refinement TTA using pretrained MedSAM without parametric updates.</p>
+    </div>
+
+    <div class="project-card">
+      <span class="project-card-tag">Generative AI</span>
+      <h3>Multi-Target MRI Translation via Conditional Latent Diffusion</h3>
+      <p>Multi-target MRI translation framework where Masked Autoencoder latents condition a 1D diffusion model. Integrated contrastive learning and classifier-free guidance for enhanced conditional generation.</p>
+      <p class="project-stat">+51.3% performance improvement</p>
+    </div>
+
+    <div class="project-card">
+      <span class="project-card-tag">Video Understanding</span>
+      <h3>Surgical Phase Recognition from Cataract Surgery Video</h3>
+      <p>BiLSTM on next-tuple prediction to learn temporal structure-aware label embeddings. Multi-head prediction with teacher forcing to accelerate convergence and improve representation quality.</p>
+      <p class="project-stat">Edit score ≈ 85.7 (+3.4% over SOTA baseline)</p>
+    </div>
+
+    <div class="project-card">
+      <span class="project-card-tag">RAG · NLP</span>
+      <h3>Clinical Trial Patient Matching RAG System</h3>
+      <p>Retrieval-augmented pipeline over MIMIC-IV EHR notes using ClinicalBERT embeddings and FAISS vector search. Evaluated multiple LLMs on AWS Bedrock with few-shot prompting for eligibility classification.</p>
+      <p class="project-stat">≈ 91.9% accuracy on boolean criteria</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">Education</h2>
+
+  <div class="edu-item">
+    <div>
+      <p class="edu-degree">M.S. in Bioengineering</p>
+      <p class="edu-school">University of California, San Diego</p>
+    </div>
+    <p class="edu-date">Expected May 2027</p>
+  </div>
+
+  <div class="edu-item">
+    <div>
+      <p class="edu-degree">B.Tech. in Biomedical Engineering</p>
+      <p class="edu-school">Indian Institute of Technology Hyderabad</p>
+    </div>
+    <p class="edu-date">2024</p>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Say hello</p>
+  <h2 class="section-title">Contact</h2>
+  <p style="color: var(--text-secondary); max-width: 480px;">Open to research collaborations, internship opportunities, and conversations about ML in healthcare.</p>
+  <div class="divider"></div>
+  <div class="contact-row">
+    <a href="mailto:vnitinshreyes@gmail.com" class="btn btn-primary">vnitinshreyes@gmail.com</a>
+    <a href="https://github.com/vnitinshreyes" target="_blank" class="btn btn-ghost">GitHub</a>
+    <a href="https://linkedin.com/in/vnitinshreyes" target="_blank" class="btn btn-ghost">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span>Nitin Shreyes Venkatesan</span>
+  <span>San Diego, CA</span>
+</footer>
+
+</body>
+</html>
