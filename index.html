@@ -12,7 +12,6 @@
 
   :root {
     --bg: #0D0D0D;
-    --surface: #141414;
     --card: #1A1A1A;
     --border: #272727;
     --accent: #4A9EBF;
@@ -47,16 +46,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2.5rem;
-    background: rgba(13,13,13,0.85);
+    background: rgba(13,13,13,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    letter-spacing: 0.01em;
-    color: var(--text);
-  }
+  .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--text); }
   .nav-links { display: flex; gap: 2rem; }
   .nav-links a {
     color: var(--text-secondary);
@@ -75,7 +69,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 8rem 2.5rem 5rem;
-    max-width: 860px;
+    max-width: 900px;
     position: relative;
     overflow: hidden;
   }
@@ -95,43 +89,70 @@
     opacity: 0.5;
   }
   @keyframes scan {
-    0% { top: 0%; opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
+    0%   { top: 0%;   opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
     100% { top: 100%; opacity: 0; }
   }
+  .hero-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    background: var(--card);
+  }
+  .hero-photo-fallback {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    background: var(--card);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--accent);
+  }
+  .hero-text { flex: 1; min-width: 260px; }
   .hero-eyebrow {
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   .hero h1 {
     font-family: var(--serif);
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-size: clamp(2.4rem, 5vw, 4rem);
     line-height: 1.1;
     font-weight: 400;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
     color: var(--text);
   }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
   .hero-bio {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    max-width: 580px;
+    max-width: 560px;
     line-height: 1.75;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
-  .hero-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* BUTTONS */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -143,24 +164,13 @@
     transition: all 0.2s;
     cursor: pointer;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: #0D0D0D;
-    border: 1px solid var(--accent);
-  }
+  .btn-primary { background: var(--accent); color: #0D0D0D; border: 1px solid var(--accent); }
   .btn-primary:hover { background: #5BAFD0; text-decoration: none; color: #0D0D0D; }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-  }
+  .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--text-secondary); color: var(--text); text-decoration: none; }
 
   /* SECTIONS */
-  section {
-    padding: 5rem 2.5rem;
-    max-width: 860px;
-  }
+  section { padding: 5rem 2.5rem; max-width: 900px; }
   .section-label {
     font-size: 0.72rem;
     font-weight: 500;
@@ -177,7 +187,20 @@
     color: var(--text);
   }
 
-  /* SKILLS */
+  /* SKILL PILLS */
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+  .skill-pill {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.18rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(74,158,191,0.1);
+    border: 1px solid rgba(74,158,191,0.25);
+    color: var(--accent);
+  }
+
+  /* SKILLS GRID */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -187,10 +210,7 @@
     border-radius: 8px;
     overflow: hidden;
   }
-  .skill-cell {
-    background: var(--card);
-    padding: 1.4rem 1.5rem;
-  }
+  .skill-cell { background: var(--card); padding: 1.4rem 1.5rem; }
   .skill-cell-label {
     font-size: 0.7rem;
     font-weight: 600;
@@ -199,11 +219,7 @@
     color: var(--accent);
     margin-bottom: 0.75rem;
   }
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag {
     font-size: 0.75rem;
     padding: 0.2rem 0.55rem;
@@ -214,10 +230,7 @@
   }
 
   /* EXPERIENCE */
-  .exp-item {
-    padding: 2rem 0;
-    border-top: 1px solid var(--border);
-  }
+  .exp-item { padding: 2rem 0; border-top: 1px solid var(--border); }
   .exp-item:last-child { border-bottom: 1px solid var(--border); }
   .exp-header {
     display: flex;
@@ -226,45 +239,12 @@
     gap: 1rem;
     margin-bottom: 0.4rem;
   }
-  .exp-role {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--text);
-  }
-  .exp-date {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    white-space: nowrap;
-    padding-top: 0.2rem;
-    letter-spacing: 0.04em;
-  }
-  .exp-org {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 0.9rem;
-    letter-spacing: 0.02em;
-  }
-  .exp-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-  .exp-bullets li {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    padding-left: 1.1rem;
-    position: relative;
-  }
-  .exp-bullets li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--text-muted);
-  }
+  .exp-role { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--text); }
+  .exp-date { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); white-space: nowrap; padding-top: 0.2rem; letter-spacing: 0.04em; }
+  .exp-org { font-size: 0.82rem; font-weight: 500; color: var(--accent); margin-bottom: 0.9rem; letter-spacing: 0.02em; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .exp-bullets li { font-size: 0.88rem; color: var(--text-secondary); padding-left: 1.1rem; position: relative; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--text-muted); }
 
   /* PROJECTS */
   .projects-grid {
@@ -278,6 +258,8 @@
     border-radius: 8px;
     padding: 1.5rem;
     transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
   }
   .project-card:hover { border-color: #383838; }
   .project-card-tag {
@@ -300,18 +282,9 @@
     color: var(--text);
     line-height: 1.3;
   }
-  .project-card p {
-    font-size: 0.83rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-  .project-stat {
-    margin-top: 1rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 0.03em;
-  }
+  .project-card p { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.65; }
+  .project-stat { margin-top: 0.75rem; font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.03em; }
+  .project-card .skill-pills { margin-top: auto; padding-top: 1rem; }
 
   /* EDUCATION */
   .edu-item {
@@ -323,42 +296,13 @@
     gap: 1rem;
   }
   .edu-item:last-child { border-bottom: 1px solid var(--border); }
-  .edu-degree {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-  }
-  .edu-school {
-    font-size: 0.83rem;
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .edu-date {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-    padding-top: 0.25rem;
-    letter-spacing: 0.04em;
-  }
+  .edu-degree { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--text); margin-bottom: 0.25rem; }
+  .edu-school { font-size: 0.83rem; color: var(--accent); font-weight: 500; }
+  .edu-date { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; padding-top: 0.25rem; letter-spacing: 0.04em; }
 
   /* CONTACT */
-  .contact-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-  }
-
-  /* DIVIDER */
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: var(--accent);
-    margin: 1.5rem 0;
-    opacity: 0.5;
-  }
+  .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+  .divider { width: 40px; height: 1px; background: var(--accent); margin: 1.5rem 0; opacity: 0.5; }
 
   /* FOOTER */
   footer {
@@ -375,7 +319,8 @@
     nav { padding: 1rem 1.25rem; }
     .nav-links { gap: 1rem; }
     .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
-    .hero h1 { font-size: 2.4rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-photo, .hero-photo-fallback { width: 80px; height: 80px; }
     .exp-header { flex-direction: column; gap: 0.25rem; }
     .edu-item { flex-direction: column; gap: 0.25rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -396,18 +341,29 @@
 
 <div class="hero">
   <div class="scan-line"></div>
-  <p class="hero-eyebrow">ML Researcher · San Diego, CA</p>
-  <h1>Nitin Shreyes<br><em>Venkatesan</em></h1>
-  <p class="hero-bio">
-    Bioengineering M.S. candidate at UC San Diego building ML systems for healthcare.
-    Experienced across computer vision, statistical modelling, and retrieval-augmented systems —
-    with a track record of owning full pipelines from annotation protocol design
-    to model development and clinical evaluation.
-  </p>
-  <div class="hero-links">
-    <a href="mailto:vnitinshreyes@gmail.com" class="btn btn-primary">Get in touch</a>
-    <a href="https://github.com/vnitinshreyes" target="_blank" class="btn btn-ghost">GitHub</a>
-    <a href="https://linkedin.com/in/vnitinshreyes" target="_blank" class="btn btn-ghost">LinkedIn</a>
+  <div class="hero-inner">
+    <img
+      class="hero-photo"
+      src="https://raw.githubusercontent.com/armistrom/armistrom.github.io/main/Image.heic"
+      alt="Nitin Shreyes Venkatesan"
+      onerror="this.style.display='none'; document.getElementById('pfallback').style.display='flex';"
+    >
+    <div class="hero-photo-fallback" id="pfallback">N</div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">ML Researcher · San Diego, CA</p>
+      <h1>Nitin Shreyes<br><em>Venkatesan</em></h1>
+      <p class="hero-bio">
+        Bioengineering M.S. candidate at UC San Diego building ML systems for healthcare.
+        Experienced across computer vision, statistical modelling, and retrieval-augmented systems —
+        with a track record of owning full pipelines from annotation protocol design
+        to model development and clinical evaluation.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:vnitinshreyes@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="https://github.com/armistrom" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/nitin-shreyes-venkatesan-485437218/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -471,6 +427,13 @@
       <li>Built an end-to-end human-in-the-loop domain-adaptation annotation tool for diseased CT angiography — from initial segmentation protocol to clinician-in-the-loop fine-tuning on diseased anatomy.</li>
       <li>Experimenting with parameter-efficient adaptation (LoRA-based SFT, case-specific and EMA adapters) to improve transfer to diseased anatomy.</li>
     </ul>
+    <div class="skill-pills">
+      <span class="skill-pill">nnUNet</span>
+      <span class="skill-pill">Medical Image Segmentation</span>
+      <span class="skill-pill">Domain Adaptation</span>
+      <span class="skill-pill">LoRA / PEFT</span>
+      <span class="skill-pill">Uncertainty Estimation</span>
+    </div>
   </div>
 
   <div class="exp-item">
@@ -484,6 +447,14 @@
       <li>Trained CNN and Vision Transformer (ViT) models for BI-RADS classification, achieving 76% accuracy (+23% over baseline).</li>
       <li>Built an image processing pipeline with denoising and ridge operators to generate vessel masks, reducing annotation time by 3×.</li>
     </ul>
+    <div class="skill-pills">
+      <span class="skill-pill">Image Classification</span>
+      <span class="skill-pill">Vision Transformers</span>
+      <span class="skill-pill">Convolutional Neural Networks</span>
+      <span class="skill-pill">Image Processing</span>
+      <span class="skill-pill">Annotation Protocol Design</span>
+      <span class="skill-pill">OpenCV</span>
+    </div>
   </div>
 </section>
 
@@ -496,6 +467,13 @@
       <span class="project-card-tag">Domain Adaptation</span>
       <h3>Foundation Model Adaptation for Medical Imaging</h3>
       <p>Reviewing UDA and Test Time Adaptation for medical image segmentation, focusing on language as a domain-agnostic cue. Implementing latent-refinement TTA using pretrained MedSAM without parametric updates.</p>
+      <div class="skill-pills">
+        <span class="skill-pill">TTA</span>
+        <span class="skill-pill">UDA</span>
+        <span class="skill-pill">MedSAM</span>
+        <span class="skill-pill">Foundation Models</span>
+      
+      </div>
     </div>
 
     <div class="project-card">
@@ -503,6 +481,12 @@
       <h3>Multi-Target MRI Translation via Conditional Latent Diffusion</h3>
       <p>Multi-target MRI translation framework where Masked Autoencoder latents condition a 1D diffusion model. Integrated contrastive learning and classifier-free guidance for enhanced conditional generation.</p>
       <p class="project-stat">+51.3% performance improvement</p>
+      <div class="skill-pills">
+        <span class="skill-pill">Diffusion Models</span>
+        <span class="skill-pill">Masked Image Modelling</span>
+        <span class="skill-pill">Contrastive Learning</span>
+        <span class="skill-pill">Classifier-Free Guidance</span>
+      </div>
     </div>
 
     <div class="project-card">
@@ -510,6 +494,12 @@
       <h3>Surgical Phase Recognition from Cataract Surgery Video</h3>
       <p>BiLSTM on next-tuple prediction to learn temporal structure-aware label embeddings. Multi-head prediction with teacher forcing to accelerate convergence and improve representation quality.</p>
       <p class="project-stat">Edit score ≈ 85.7 (+3.4% over SOTA baseline)</p>
+      <div class="skill-pills">
+        <span class="skill-pill">BiLSTM</span>
+        <span class="skill-pill">Temporal Modelling</span>
+        <span class="skill-pill">Action Segmentation</span>
+        <span class="skill-pill">Video Analysis</span>
+      </div>
     </div>
 
     <div class="project-card">
@@ -517,6 +507,13 @@
       <h3>Clinical Trial Patient Matching RAG System</h3>
       <p>Retrieval-augmented pipeline over MIMIC-IV EHR notes using ClinicalBERT embeddings and FAISS vector search. Evaluated multiple LLMs on AWS Bedrock with few-shot prompting for eligibility classification.</p>
       <p class="project-stat">≈ 91.9% accuracy on boolean criteria</p>
+      <div class="skill-pills">
+        <span class="skill-pill">RAG</span>
+        <span class="skill-pill">ClinicalBERT</span>
+        <span class="skill-pill">FAISS</span>
+        <span class="skill-pill">AWS Bedrock</span>
+        <span class="skill-pill">Few-shot Prompting</span>
+      </div>
     </div>
 
   </div>
@@ -550,8 +547,8 @@
   <div class="divider"></div>
   <div class="contact-row">
     <a href="mailto:vnitinshreyes@gmail.com" class="btn btn-primary">vnitinshreyes@gmail.com</a>
-    <a href="https://github.com/vnitinshreyes" target="_blank" class="btn btn-ghost">GitHub</a>
-    <a href="https://linkedin.com/in/vnitinshreyes" target="_blank" class="btn btn-ghost">LinkedIn</a>
+    <a href="https://github.com/armistrom" target="_blank" class="btn btn-ghost">GitHub</a>
+    <a href="https://www.linkedin.com/in/nitin-shreyes-venkatesan-485437218/" target="_blank" class="btn btn-ghost">LinkedIn</a>
   </div>
 </section>
 
